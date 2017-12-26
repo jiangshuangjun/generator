@@ -10,16 +10,16 @@ import code.generator.generator.common.Const;
 public class DaoUtil {
 	
 	// 文件路径
-	private static final String SO_DAO_PATH = "com/asiainfo/code/generator/dao/so/interfaces";
-	private static final String PARTY_DAO_PATH = "com/asiainfo/code/generator/dao/party/interfaces";
-	private static final String SO_DAO_IMPL_PATH = "com/asiainfo/code/generator/dao/so/impl";
-	private static final String PARTY_DAO_IMPL_PATH = "com/asiainfo/code/generator/dao/party/impl";
+	private static final String SO_DAO_PATH = "code/generator/generator/dao/so/interfaces";
+	private static final String PARTY_DAO_PATH = "code/generator/generator/dao/party/interfaces";
+	private static final String SO_DAO_IMPL_PATH = "code/generator/generator/dao/so/impl";
+	private static final String PARTY_DAO_IMPL_PATH = "code/generator/generator/dao/party/impl";
 	
 	// 包名
-	private static final String SO_DAO_PACKAGE = "com.asiainfo.code.generator.dao.so.interfaces";
-	private static final String PARTY_DAO_PACKAGE = "com.asiainfo.code.generator.dao.party.interfaces";
-	private static final String SO_DAO_IMPL_PACKAGE = "com.asiainfo.code.generator.dao.so.impl";
-	private static final String PARTY_DAO_IMPL_PACKAGE = "com.asiainfo.code.generator.dao.party.impl";
+	private static final String SO_DAO_PACKAGE = "code.generator.generator.dao.so.interfaces";
+	private static final String PARTY_DAO_PACKAGE = "code.generator.generator.dao.party.interfaces";
+	private static final String SO_DAO_IMPL_PACKAGE = "code.generator.generator.dao.so.impl";
+	private static final String PARTY_DAO_IMPL_PACKAGE = "code.generator.generator.dao.party.impl";
 	
 	// 公共部分
 	private static final String RT_1 = "\r\n";
@@ -58,9 +58,9 @@ public class DaoUtil {
 	private void createDAO(String boBeanName, String dbFlag) throws Exception {
 		String pathName = "";
 		if (Const.DB_SO.equals(dbFlag)) {
-			pathName = System.getProperty("user.dir") + "/src/" + SO_DAO_PATH + "/" + "I" + getTableName(boBeanName) + "DAO.java";
+			pathName = System.getProperty("user.dir") + "/src/main/java/" + SO_DAO_PATH + "/" + "I" + getTableName(boBeanName) + "DAO.java";
 		} else if (Const.DB_PARTY.equals(dbFlag)) {
-			pathName = System.getProperty("user.dir") + "/src/" + PARTY_DAO_PATH + "/" + "I" + getTableName(boBeanName) + "DAO.java";
+			pathName = System.getProperty("user.dir") + "/src/main/java/" + PARTY_DAO_PATH + "/" + "I" + getTableName(boBeanName) + "DAO.java";
 		} else {
 			throw new Exception("数据库标志传入错误，只能为SO或PARTY之一");
 		}
@@ -123,9 +123,9 @@ public class DaoUtil {
 	private void createDAOImpl(String boBeanName, String dbFlag) throws Exception {
 		String pathName = "";
 		if (Const.DB_SO.equals(dbFlag)) {
-			pathName = System.getProperty("user.dir") + "/src/" + SO_DAO_IMPL_PATH + "/" + getTableName(boBeanName) + "DAOImpl.java";
+			pathName = System.getProperty("user.dir") + "/src/main/java/" + SO_DAO_IMPL_PATH + "/" + getTableName(boBeanName) + "DAOImpl.java";
 		} else if (Const.DB_PARTY.equals(dbFlag)) {
-			pathName = System.getProperty("user.dir") + "/src/" + PARTY_DAO_IMPL_PATH + "/" + getTableName(boBeanName) + "DAOImpl.java";
+			pathName = System.getProperty("user.dir") + "/src/main/java/" + PARTY_DAO_IMPL_PATH + "/" + getTableName(boBeanName) + "DAOImpl.java";
 		} else {
 			throw new Exception("数据库标志传入错误，只能为SO或PARTY之一");
 		}
