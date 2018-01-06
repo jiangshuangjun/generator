@@ -1,0 +1,21 @@
+public interface I#.{table_name}#DAO {
+
+    Long queryNewId() throws Exception;
+
+    #.{table_name}#Bean query#.{table_name}#Bean(String condition, Map parameter) throws Exception;
+
+    List<#.{table_name}#Bean> query#.{table_name}#BeanList(String condition, Map parameter) throws Exception;
+
+    void insert#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception;
+
+    void insert#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception;
+
+    void update#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception;
+
+    void update#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception;
+
+    void delete#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception;
+
+    void delete#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception;
+
+}

@@ -1,0 +1,124 @@
+public class #.{table_name}#DAOImpl implements I#.{table_name}#DAO {
+
+    @Override
+    public Long queryNewId() throws Exception {
+
+        return #.{table_name}#Engine.getNewId().longValue();
+    }
+
+    @Override
+    public #.{table_name}#Bean query#.{table_name}#Bean(String condition, Map parameter) throws Exception {
+
+        #.{table_name}#Bean[] beanArray = #.{table_name}#Engine.getBeans(condition, parameter);
+
+        if (beanArray == null || beanArray.length <= 0) {
+            return null;
+        }
+
+        if (beanArray != null && beanArray.length > 1) {
+
+            // 数据异常，根据查询条件获取到多条数据，请检查
+            ExceptionUtil.throwBusinessException("CMSB00002000006");
+        }
+
+        return beanArray[0];
+    }
+
+    @Override
+    public List<#.{table_name}#Bean> query#.{table_name}#BeanList(String condition, Map parameter) throws Exception {
+
+        #.{table_name}#Bean[] beanArray = #.{table_name}#Engine.getBeans(condition, parameter);
+
+        if (beanArray != null && beanArray.length > 0) {
+            List<#.{table_name}#Bean> beanList = new ArrayList<#.{table_name}#Bean>();
+            Collections.addAll(beanList, beanArray);
+            return beanList;
+        }
+
+        return null;
+    }
+
+    @Override
+    public void insert#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception {
+
+        List<#.{table_name}#Bean> beanList = new ArrayList<#.{table_name}#Bean>();
+
+        beanList.add(bean);
+
+        this.insert#.{table_name}#BeanList(beanList);
+    }
+
+    @Override
+    public void insert#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception {
+
+        if (beanList == null || beanList.isEmpty()) {
+            return;
+        }
+
+        #.{table_name}#Bean[] beanArray = beanList.toArray(new #.{table_name}#Bean[beanList.size()]);
+        for (#.{table_name}#Bean bean : beanArray) {
+            if (!bean.isNew()) {
+                // {0}非新增模式
+                ExceptionUtil.throwBusinessException("CMSB00001000001", "InsUserBean");
+            }
+        }
+
+        #.{table_name}#Engine.saveBatch(beanArray);
+    }
+
+    @Override
+    public void update#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception {
+
+        List<#.{table_name}#Bean> beanList = new ArrayList<#.{table_name}#Bean>();
+
+        beanList.add(bean);
+
+        this.update#.{table_name}#BeanList(beanList);
+    }
+
+    @Override
+    public void update#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception {
+
+        if (beanList == null || beanList.isEmpty()) {
+            return;
+        }
+
+        #.{table_name}#Bean[] beanArray = beanList.toArray(new #.{table_name}#Bean[beanList.size()]);
+        for (#.{table_name}#Bean bean : beanArray) {
+            if (!bean.isModified()) {
+                // {0}非修改模式
+                ExceptionUtil.throwBusinessException("CMSB00001000002", "InsUserBean");
+            }
+        }
+
+        #.{table_name}#Engine.saveBatch(beanArray);
+    }
+
+    @Override
+    public void delete#.{table_name}#Bean(#.{table_name}#Bean bean) throws Exception {
+
+        List<#.{table_name}#Bean> beanList = new ArrayList<#.{table_name}#Bean>();
+
+        beanList.add(bean);
+
+        delete#.{table_name}#BeanList(beanList);
+    }
+
+    @Override
+    public void delete#.{table_name}#BeanList(List<#.{table_name}#Bean> beanList) throws Exception {
+        if (beanList == null || beanList.isEmpty()) {
+            return;
+        }
+
+        #.{table_name}#Bean[] beanArray = beanList.toArray(new #.{table_name}#Bean[beanList.size()]);
+        for (#.{table_name}#Bean bean : beanArray) {
+            if (!bean.isDeleted()) {
+                // {0}非删除模式
+                ExceptionUtil.throwBusinessException("CMSB00001000004", "InsUserBean");
+            }
+        }
+
+        #.{table_name}#Engine.saveBatch(beanArray);
+    }
+
+}
