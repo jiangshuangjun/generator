@@ -1,4 +1,4 @@
-package code.generator.generator.common;
+package code.generator.generator.common.constants;
 
 public class Const {
 	

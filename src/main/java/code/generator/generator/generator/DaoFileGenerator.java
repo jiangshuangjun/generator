@@ -1,13 +1,13 @@
-package code.generator.generator.util;
+package code.generator.generator.generator;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
-import code.generator.generator.common.Const;
+import code.generator.generator.common.constants.Const;
 
-public class DaoUtil {
+public class DaoFileGenerator {
 	
 	// 文件路径
 	private static final String SO_DAO_PATH = "code/generator/generator/dao/so/interfaces";
@@ -29,10 +29,16 @@ public class DaoUtil {
 	private static final String BLANK_12 = BLANK_8 + BLANK_4;
 	private static final String BLANK_16 = BLANK_8 + BLANK_8;
 	
+	public void createDaoFile(String[] beanNames, String dbFlag) throws Exception {
+		
+		createBeanDao(beanNames, dbFlag);
+		createBeanDaoImpl(beanNames, dbFlag);
+	}
+	
 	/**
 	 * 生成DAO
 	 */
-	public void createBeanDao(String[] beanNames, String dbFlag) throws Exception {
+	private void createBeanDao(String[] beanNames, String dbFlag) throws Exception {
 		for (String name : beanNames) {
 			if (name == null || "".equals(name) || "".equals(name.trim()) || !name.endsWith("Bean")) {
 				continue;
@@ -45,7 +51,7 @@ public class DaoUtil {
 	/**
 	 * 生成DAOImpl
 	 */
-	public void createBeanDaoImpl(String[] beanNames, String dbFlag) throws Exception {
+	private void createBeanDaoImpl(String[] beanNames, String dbFlag) throws Exception {
 		for (String name : beanNames) {
 			if (name == null || "".equals(name) || "".equals(name.trim()) || !name.endsWith("Bean")) {
 				continue;
