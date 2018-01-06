@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CODE_TEMPLETE SUPER_NAME="IInsUserDAO" CLASS_NAME="InsUserDAOImpl">
+    <CONSTANTS BLANK_NUM="4"><!-- 常量 -->
+        <CONSTANT INDEX="1" BLANK_NUM="0" TYPE="String">
+            <KEY></KEY>
+            <VALUE></VALUE>
+        </CONSTANT>
+        <CONSTANT INDEX="2" BLANK_NUM="0" TYPE="Long">
+            <KEY></KEY>
+            <VALUE></VALUE>
+        </CONSTANT>
+    </CONSTANTS>
+    <FIELDS BLANK_NUM="4"><!-- 类属性 -->
+        <FIELD INDEX="1" BALNK_NUM="0" TYPE="String">
+            <KEY></KEY>
+            <VALUE></VALUE>
+        </FIELD>
+        <FIELD INDEX="2" BALNK_NUM="0" TYPE="Long">
+            <KEY></KEY>
+            <VALUE></VALUE>
+        </FIELD>
+    </FIELDS>
+    <FUNCTIONS BLANK_NUM="4"><!--方法-->
+        <FUNCTION NAME="Query" INDEX="1" RETURN_TYPE="Object" PARAMS_TYPE="String,Long">
+            <FUNCTION_BODY INDEX="1" BLANK_NUM="4">String a = null;</FUNCTION_BODY>
+            <FUNCTION_BODY INDEX="2" BLANK_NUM="4">Long b = null;</FUNCTION_BODY>
+        </FUNCTION>
+        <FUNCTION NAME="Insert" INDEX="2" RETURN_TYPE="void" PARAMS_TYPE="Object">
+            <FUNCTION_BODY>
+                <![CDATA[
+                String a = null;
+                Long n = null;
+            ]]>
+            </FUNCTION_BODY>
+        </FUNCTION>
+    </FUNCTIONS>
+</CODE_TEMPLETE>
